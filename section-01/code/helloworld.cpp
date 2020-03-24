@@ -16,6 +16,7 @@ int main(int, char**)
     SDL_BlitSurface(blackground_surface, NULL, surface, NULL);
     SDL_UpdateWindowSurface(window);
     SDL_Delay(3000);
+    SDL_FreeSurface(surface);
     SDL_DestroyWindow(window);
     SDL_Quit();
     return 0;
