@@ -14,8 +14,14 @@ file(MAKE_DIRECTORY ${build_output_directory})
 ### Source File
 set(source helloworld.cpp)
 FILE(GLOB binary_file ../../3rdparty/lib/x64/*.dll )
+FILE(GLOB source_picture ../../source/*.* )
 message("binary_file : ${binary_file}")
+message("source_picture : ${source_picture}")
 file(COPY ${binary_file} DESTINATION ${build_output_directory})
+### Copy to the directory of working 
+file(COPY ${source_picture} DESTINATION ${build_output_directory}../)
+### Copy to the directory of running time 
+file(COPY ${source_picture} DESTINATION ${build_output_directory})
 
 ## addtion include directory
 set(add_include_dir ../../3rdparty)
@@ -48,8 +54,10 @@ add_definitions(${preprocessor_macroa})
 
 
 ### Set build output directory
+SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY  ${build_output_directory})
 SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${build_output_directory})
 SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${build_output_directory})
+
 # create project
 add_executable(${objname} ${source})
 message("source_file : ${source}")
