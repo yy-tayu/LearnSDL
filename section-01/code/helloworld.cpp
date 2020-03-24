@@ -12,7 +12,7 @@ int main(int, char**)
         screen_width, screen_height,
         SDL_WINDOW_SHOWN);
     SDL_Surface* surface = SDL_GetWindowSurface(window);
-    SDL_Surface* blackground_surface = SDL_LoadBMP("Hello.bmp");
+    SDL_Surface* blackground_surface = SDL_LoadBMP("../../source/Hello.bmp");
     SDL_BlitSurface(blackground_surface, NULL, surface, NULL);
     SDL_UpdateWindowSurface(window);
     SDL_Delay(3000);
