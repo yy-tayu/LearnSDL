@@ -1,0 +1,63 @@
+# CMAKE verison
+cmake_minimum_required(VERSION 3.15)
+
+
+# Project name
+set(objname learn_sdl_section_02)
+project(${objname})
+
+### Created The Build Output Directory
+set(build_output_directory ${CMAKE_BINARY_DIR}/bin/ CACHE INTERNAL "Build Output directory")
+message("Build Output Directory : ${CMAKE_BINARY_DIR}")
+file(MAKE_DIRECTORY ${build_output_directory})
+
+### Source File
+set(source event_response.cpp)
+FILE(GLOB binary_file ../../3rdparty/lib/x64/*.dll )
+FILE(GLOB source_picture ../../source/*.* )
+message("binary_file : ${binary_file}")
+message("source_picture : ${source_picture}")
+file(COPY ${binary_file} DESTINATION ${build_output_directory})
+### Copy to the directory of working 
+file(COPY ${source_picture} DESTINATION ${build_output_directory}../)
+### Copy to the directory of running time 
+file(COPY ${source_picture} DESTINATION ${build_output_directory})
+
+## addtion include directory
+set(add_include_dir ../../3rdparty)
+
+## addtion library directory
+set(add_lib_dir ../../3rdparty/lib/x64)
+
+## addtion library
+set(add_lib SDL2.lib SDL2main.lib SDL2_image.lib)
+
+## Preprocessor Definitions
+#if(CMAKE_BUILD_TYPE STREQUAL Debug)
+#	set(preprocessor_macroa )
+#else()
+#	set(preprocessor_macroa )
+#endif()
+
+### sets Character Set to Unicode or Multi Byte
+#SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /UMBCS /D_MBCS")
+
+
+
+### Configruation object
+include_directories(${add_include_dir})
+link_directories(${add_lib_dir})
+link_libraries(${add_lib})
+add_definitions(${preprocessor_macroa})
+
+
+
+
+### Set build output directory
+SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY  ${build_output_directory})
+SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${build_output_directory})
+SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${build_output_directory})
+
+# create project
+add_executable(${objname} ${source})
+message("source_file : ${source}")
