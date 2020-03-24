@@ -14,7 +14,7 @@ file(MAKE_DIRECTORY ${build_output_directory})
 ### Source File
 set(source helloworld.cpp)
 FILE(GLOB binary_file ../../3rdparty/lib/x64/*.dll )
-FILE(GLOB source_picture ../../source/*.* )
+FILE(GLOB source_picture ../source/*.* )
 message("binary_file : ${binary_file}")
 message("source_picture : ${source_picture}")
 file(COPY ${binary_file} DESTINATION ${build_output_directory})
